@@ -60,7 +60,11 @@ Task {
                                         .replacingOccurrences(of: "\n", with: "☃︎") // Replace ☃︎ with line break after processing CSV
                                     
                                     // Add final result to output if all conditions pass
-                                    output += "\n\"\(list.name)\",\"\(task.name)\",\(task.status.status),\(newTask.status.status),\"\(csvCompatibleDescription)\",\"\(csvCompatibleNewDescription)\",\(task.url),\(newTask.url)"
+                                    if csvCompatibleDescription == csvCompatibleNewDescription {
+                                        output += "\n\"\(list.name)\",\"\(task.name)\",\(task.status.status),\(newTask.status.status),\"\(csvCompatibleDescription)\",,\(task.url),\(newTask.url)"
+                                    } else {
+                                        output += "\n\"\(list.name)\",\"\(task.name)\",\(task.status.status),\(newTask.status.status),\"\(csvCompatibleDescription)\",\"\(csvCompatibleNewDescription)\",\(task.url),\(newTask.url)"
+                                    }
                                 }
                             }
                         }
